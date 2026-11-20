@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CPI Toolkit privacy policy</title><link rel="icon" href="icon-128.png"><style>
+:root{--bg:#f7f9fa;--fg:#14212b;--muted:#4d5f6b;--line:#d9e1e6;--accent:#0e6f68;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#10171c;--fg:#e6edf1;--muted:#a3b3bd;--line:#2a3740;--accent:#4cc3b8;--card:#162028}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:780px;margin:0 auto;padding:40px 16px 64px}a{color:var(--accent)}
+header{display:flex;align-items:center;gap:12px;margin-bottom:24px}header img{width:40px;height:40px}
+header span{font-weight:600;font-size:20px}h1{font-size:28px;line-height:1.25;margin:8px 0 16px}h2{font-size:20px;margin-top:32px}
+table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--card)}code{font-size:90%}.note{color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+ul.links{padding-left:20px}</style></head>
+<body><main><header><img src="icon-128.png" alt=""><span>CPI Toolkit</span></header>
+<h1>CPI Toolkit — Privacy Policy</h1>
+<p>Effective date: 20 November 2026. Publisher: the CPI Toolkit project, <a href="https://github.com/ruvin00002-svg/cpi-toolkit">https://github.com/ruvin00002-svg/cpi-toolkit</a>.
+Contact for privacy questions: <a href="mailto:ruvink44@gmail.com">ruvink44@gmail.com</a>, or an issue in the repository.</p>
+<p>CPI Toolkit is a browser extension for SAP Cloud Integration. This policy describes what the extension does with data.
+It applies to version 5.0.1 and later until it is updated.</p>
+<h2>Summary</h2>
+<ul>
+<li>The extension has no server. The publisher does not receive, collect, sell or share any data from it.</li>
+<li>It reads data from <strong>your own SAP tenant</strong> with the session you already have in the browser, and keeps what it needs
+<strong>in your browser</strong>.</li>
+<li>It sends data to <strong>an AI service only if you configure one</strong>, and only after you approve each request.</li>
+<li>It sends requests to other addresses only when <strong>you</strong> enter them (API Test Studio, SAP API host with your service key),
+after your browser asks for permission for that address.</li>
+</ul>
+<h2>Data the extension handles</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Where it comes from</th>
+<th>What happens with it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content of SAP Cloud Integration pages and SAP APIs (integration flows, message logs, error texts, configuration)</td>
+<td>Your tenant, read with your browser session</td>
+<td>Shown and analysed in your browser. Message logs and error texts read for analysis stay in memory.</td>
+</tr>
+<tr>
+<td>Settings, history, review results, snapshots, projects, approved documents, test data, audit log</td>
+<td>You and the tenant</td>
+<td>Stored in the browser's extension storage on your computer (<code>chrome.storage.local</code>); never synced. Listed with sizes and deletable in Release &gt; Governance.</td>
+</tr>
+<tr>
+<td>AI service key</td>
+<td>You</td>
+<td>By default kept only until the browser closes (<code>chrome.storage.session</code>). If you choose &quot;On this computer&quot;, it is stored encrypted and expires after 30 days.</td>
+</tr>
+<tr>
+<td>API Test Studio credentials</td>
+<td>You</td>
+<td>Secret values kept until the browser closes, unless you choose to remember them on this computer.</td>
+</tr>
+<tr>
+<td>Text sent to an AI service</td>
+<td>Your question and the tool results the AI asks for</td>
+<td>Sent only to the AI address you configured, only after you approve the exact request. Passwords, tokens and keys are removed before sending; tenant names and parameter values are replaced unless you allow them. A log of requests (details and a fingerprint by default) stays in your browser.</td>
+</tr>
+<tr>
+<td>Usage counters</td>
+<td>Your use of the extension</td>
+<td>Counts of features used and AI tokens, kept in your browser only, never sent. Your organization can switch them off.</td>
+</tr>
+</tbody>
+</table>
+<h2>Third parties</h2>
+<ul>
+<li><strong>SAP</strong>: the extension talks to your SAP tenant as you would in the browser. SAP's terms and privacy policy apply to
+your tenant.</li>
+<li><strong>Your AI provider</strong> (only if you configure one): what you approve is sent to that provider; its terms and privacy
+policy apply. The extension does not include any AI service.</li>
+<li><strong>Addresses you enter</strong> in the API Test Studio or as an SAP API host receive the requests you send to them.</li>
+</ul>
+<p>No data is used for advertising, sold, used to decide creditworthiness or lending, or used for any purpose other than
+the features you use.</p>
+<h2>Your control</h2>
+<ul>
+<li>Switch the AI assistant off, or never configure it.</li>
+<li>Delete stored data in Release &gt; Governance (by category, with a confirmation), or remove the extension, which removes
+its storage.</li>
+<li>Your organization may set rules through browser policy (for example approved AI addresses, retention periods).</li>
+</ul>
+<h2>Security</h2>
+<p>The extension follows the browser's Manifest V3 rules: no code is loaded from the internet, extension pages run with a
+strict content security policy, and actions that change a tenant are off by default.</p>
+<h2>Changes</h2>
+<p>Changes to this policy are published at this address with a new effective date.</p>
+
+<p class="note">CPI Toolkit is an independent open-source project (GNU GPL v3). It is not an SAP product and is not
+affiliated with or endorsed by SAP SE. SAP, SAP Integration Suite and SAP Cloud Integration are trademarks of SAP SE.</p>
+</main></body></html>
