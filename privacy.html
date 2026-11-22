@@ -12,18 +12,24 @@ th{background:var(--card)}code{font-size:90%}.note{color:var(--muted);font-size:
 ul.links{padding-left:20px}</style></head>
 <body><main><header><img src="icon-128.png" alt=""><span>CPI Toolkit</span></header>
 <h1>CPI Toolkit — Privacy Policy</h1>
-<p>Effective date: 20 November 2026. Publisher: the CPI Toolkit project, <a href="https://github.com/ruvin00002-svg/cpi-toolkit">https://github.com/ruvin00002-svg/cpi-toolkit</a>.
+<p>Effective date: the day version 5.1.0 is published (the policy of 20 November 2026 applies to 5.0.1). Publisher: the
+CPI Toolkit project, <a href="https://github.com/ruvin00002-svg/cpi-toolkit">https://github.com/ruvin00002-svg/cpi-toolkit</a>.
 Contact for privacy questions: <a href="mailto:ruvink44@gmail.com">ruvink44@gmail.com</a>, or an issue in the repository.</p>
 <p>CPI Toolkit is a browser extension for SAP Cloud Integration. This policy describes what the extension does with data.
-It applies to version 5.0.1 and later until it is updated.</p>
+It applies to version 5.1.0 and later until it is updated.</p>
 <h2>Summary</h2>
 <ul>
-<li>The extension has no server. The publisher does not receive, collect, sell or share any data from it.</li>
 <li>It reads data from <strong>your own SAP tenant</strong> with the session you already have in the browser, and keeps what it needs
 <strong>in your browser</strong>.</li>
-<li>It sends data to <strong>an AI service only if you configure one</strong>, and only after you approve each request.</li>
-<li>It sends requests to other addresses only when <strong>you</strong> enter them (API Test Studio, SAP API host with your service key),
-after your browser asks for permission for that address.</li>
+<li>The <strong>built-in AI</strong> (Claude by Anthropic) works without setting anything up. What you approve goes through the
+<strong>CPI Toolkit AI relay</strong>, a small server run by the publisher, to Anthropic. The relay does <strong>not</strong> keep the text of
+your questions or the answers. It keeps a <strong>random CPI Toolkit ID</strong> of your install and, per day, how many questions
+and requests it sent, their size in tokens and their cost, to apply the daily limits and pay for the service.</li>
+<li>You can switch the AI off, or use <strong>your own AI service</strong> instead (AI settings, Advanced). Then nothing goes to the
+relay.</li>
+<li>Apart from the built-in AI, the publisher does not receive any data, and it never sells or shares data.</li>
+<li>The extension sends requests to other addresses only when <strong>you</strong> enter them (API Test Studio, SAP API host with your
+service key), after your browser asks for permission for that address.</li>
 </ul>
 <h2>Data the extension handles</h2>
 <table>
@@ -46,9 +52,24 @@ after your browser asks for permission for that address.</li>
 <td>Stored in the browser's extension storage on your computer (<code>chrome.storage.local</code>); never synced. Listed with sizes and deletable in Release &gt; Governance.</td>
 </tr>
 <tr>
-<td>AI service key</td>
+<td>Text sent to the AI</td>
+<td>Your question, what is open on the page, the case notes and project you work on, and the tool results the AI asks for</td>
+<td>Sent only after you approve the exact request: with the built-in AI to the CPI Toolkit AI relay and from there to Anthropic; with your own AI service to that service. URLs, host names, e-mail and IP addresses, passwords, tokens and keys are removed before sending; tenant names and parameter values are replaced unless you allow them. Message payloads and the iFlow file are never sent. A log of requests (details and a fingerprint by default) stays in your browser.</td>
+</tr>
+<tr>
+<td>CPI Toolkit ID</td>
+<td>Made at random by your install of the extension</td>
+<td>Sent with each built-in AI request so the relay can count your questions. It is not linked to your name or e-mail address. Shown in AI settings, so you can give it to the publisher (for a different limit, or to have its counts deleted).</td>
+</tr>
+<tr>
+<td>Usage counts in the relay</td>
+<td>Your use of the built-in AI</td>
+<td>Per CPI Toolkit ID and day: number of questions and requests, tokens, cost. Kept 13 months, monthly totals 25 months, then deleted. The relay does not store IP addresses or the text of requests and answers.</td>
+</tr>
+<tr>
+<td>AI service key (own AI service only)</td>
 <td>You</td>
-<td>By default kept only until the browser closes (<code>chrome.storage.session</code>). If you choose &quot;On this computer&quot;, it is stored encrypted and expires after 30 days.</td>
+<td>By default kept only until the browser closes (<code>chrome.storage.session</code>). If you choose &quot;On this computer&quot;, it is stored encrypted and expires after 30 days. The built-in AI needs no key.</td>
 </tr>
 <tr>
 <td>API Test Studio credentials</td>
@@ -56,12 +77,7 @@ after your browser asks for permission for that address.</li>
 <td>Secret values kept until the browser closes, unless you choose to remember them on this computer.</td>
 </tr>
 <tr>
-<td>Text sent to an AI service</td>
-<td>Your question and the tool results the AI asks for</td>
-<td>Sent only to the AI address you configured, only after you approve the exact request. Passwords, tokens and keys are removed before sending; tenant names and parameter values are replaced unless you allow them. A log of requests (details and a fingerprint by default) stays in your browser.</td>
-</tr>
-<tr>
-<td>Usage counters</td>
+<td>Usage counters in the browser</td>
 <td>Your use of the extension</td>
 <td>Counts of features used and AI tokens, kept in your browser only, never sent. Your organization can switch them off.</td>
 </tr>
@@ -71,22 +87,30 @@ after your browser asks for permission for that address.</li>
 <ul>
 <li><strong>SAP</strong>: the extension talks to your SAP tenant as you would in the browser. SAP's terms and privacy policy apply to
 your tenant.</li>
-<li><strong>Your AI provider</strong> (only if you configure one): what you approve is sent to that provider; its terms and privacy
-policy apply. The extension does not include any AI service.</li>
+<li><strong>Anthropic</strong> (built-in AI): processes the AI requests you approve on the publisher's behalf, under Anthropic's
+commercial terms and privacy policy (<a href="https://www.anthropic.com/legal">https://www.anthropic.com/legal</a>).</li>
+<li><strong>Cloudflare</strong>: hosts the CPI Toolkit AI relay; the requests pass through Cloudflare's network
+(<a href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</a>).</li>
+<li><strong>Your own AI provider</strong> (only if you set one up): what you approve is sent to that provider; its terms and privacy
+policy apply.</li>
 <li><strong>Addresses you enter</strong> in the API Test Studio or as an SAP API host receive the requests you send to them.</li>
 </ul>
 <p>No data is used for advertising, sold, used to decide creditworthiness or lending, or used for any purpose other than
 the features you use.</p>
 <h2>Your control</h2>
 <ul>
-<li>Switch the AI assistant off, or never configure it.</li>
+<li>Switch the AI assistant off (AI settings: Use AI), or use your own AI service instead (AI settings, Advanced).</li>
+<li>Every AI request is shown to you before it is sent; you can refuse it.</li>
+<li>Ask the publisher to delete the counts of your CPI Toolkit ID (give the ID shown in AI settings).</li>
 <li>Delete stored data in Release &gt; Governance (by category, with a confirmation), or remove the extension, which removes
 its storage.</li>
-<li>Your organization may set rules through browser policy (for example approved AI addresses, retention periods).</li>
+<li>Your organization may set rules through browser policy (for example approved AI addresses, retention periods, or the
+AI switched off).</li>
 </ul>
 <h2>Security</h2>
 <p>The extension follows the browser's Manifest V3 rules: no code is loaded from the internet, extension pages run with a
-strict content security policy, and actions that change a tenant are off by default.</p>
+strict content security policy, and actions that change a tenant are off by default. The publisher's Anthropic key is
+kept only on the relay, never in the extension. The relay accepts only CPI Toolkit's own request shape and model.</p>
 <h2>Changes</h2>
 <p>Changes to this policy are published at this address with a new effective date.</p>
 
